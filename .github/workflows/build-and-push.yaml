@@ -24,9 +24,9 @@ jobs:
           distribution: 'temurin'
 #      - name: Build with Gradle
 #        run: ./gradlew build
-      - name: ${{ vars.REGISTRY_USERNAME }}
+      - name: ${{ docker.REGISTRY_USERNAME }}
         env:
-          REGISTRY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
         run: echo "$REGISTRY_USERNAME"
       - run: echo "🍏 This job's status is ${{ job.status }}."
