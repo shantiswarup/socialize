@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
 #      - name: Build with Gradle
 #        run: ./gradlew build
-      - name: ${{ docker.REGISTRY_USERNAME }}
+      - name: docker push
         env:
           REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
