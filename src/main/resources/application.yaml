@@ -3,4 +3,6 @@ ktor:
     modules:
       - com.socialize.ApplicationKt.module
   deployment:
-    port: 8080
+    port: 4000
+  demo:
+      config: "$DEMO_CONFIG:5"
