@@ -20,31 +20,24 @@ repositories {
     mavenCentral()
 }
 
-ktor {
-    docker {
-        jreVersion.set(JavaVersion.VERSION_21)
-        localImageName.set("socialize-app")
-        imageTag.set("build")
-        portMappings.set(listOf(
-            io.ktor.plugin.features.DockerPortMapping(
-                80,
-                8080,
-                io.ktor.plugin.features.DockerPortMappingProtocol.TCP
-            )
-        ))
-        externalRegistry.set(
-            io.ktor.plugin.features.DockerImageRegistry.dockerHub(
-                appName = provider { "shantiswarup" },
-                username = providers.environmentVariable("DOCKER_HUB_USERNAME"),
-                password = providers.environmentVariable("DOCKER_HUB_PASSWORD")
-            )
-        )
-    }
-}
-
 jib {
+    from {
+        platforms {
+            platform {
+                architecture = "arm64"
+                os = "linux"
+            }
+        }
+    }
     to {
         image = "shantiswarup/socialize-app"
+        auth {
+            username = System.getenv("REGISTRY_PASSWORD") ?: ""
+            password = System.getenv("REGISTRY_PASSWORD") ?: ""
+        }
+    }
+    container {
+        ports = listOf("4000")
     }
 }
 
