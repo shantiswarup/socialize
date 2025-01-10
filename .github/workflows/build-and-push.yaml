@@ -26,7 +26,7 @@ jobs:
 #        run: ./gradlew build
       - name: Push to docker hub
         env:
-          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_USERNAME: ${{ vars.REGISTRY_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
         run: echo $REGISTRY_USERNAME
       - run: echo "🍏 This job's status is ${{ job.status }}."
