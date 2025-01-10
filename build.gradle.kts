@@ -31,10 +31,6 @@ jib {
     }
     to {
         image = "shantiswarup/socialize-app"
-        auth {
-            username = System.getenv("REGISTRY_PASSWORD") ?: ""
-            password = System.getenv("REGISTRY_PASSWORD") ?: ""
-        }
     }
     container {
         ports = listOf("4000")
