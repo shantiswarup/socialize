@@ -28,6 +28,7 @@ jobs:
         env:
           REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
-        run: echo "$REGISTRY_USERNAME"
-        run: ./gradlew jib
+        run: |
+            echo $REGISTRY_USERNAME |
+            ./gradlew jib
       - run: echo "🍏 This job's status is ${{ job.status }}."
