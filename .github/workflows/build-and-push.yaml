@@ -22,13 +22,12 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Build with Gradle
-        run: ./gradlew build
+#      - name: Build with Gradle
+#        run: ./gradlew build
       - name: Push to docker hub
         env:
           REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
           REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
         run: |
-            echo $REGISTRY_USERNAME |
-            ./gradlew jib
+            echo ${{REGISTRY_USERNAME}}
       - run: echo "🍏 This job's status is ${{ job.status }}."
