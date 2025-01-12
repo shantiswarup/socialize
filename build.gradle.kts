@@ -29,9 +29,6 @@ jib {
             }
         }
     }
-    to {
-        image = "shantiswarup/socialize-app"
-    }
     container {
         ports = listOf("4000")
     }
