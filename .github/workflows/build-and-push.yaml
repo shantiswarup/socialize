@@ -31,5 +31,6 @@ jobs:
         run: ./gradlew jib -Djib.to.auth.username=$REGISTRY_USERNAME -Djib.to.auth.password=$REGISTRY_PASSWORD
       - name: update helm chart
         run: |
-          sed -i "s/tag: .*/tag: $GITHUB_SHA/" deployments/socialize-app/values.yaml
+          echo $GITHUB_SHA |
+          sed -i "" "s|tag:.*|tag: $GITHUB_SHA|g" deployments/socialize-app/values.yaml
       - run: echo "🍏 This job's status is ${{ job.status }}."
